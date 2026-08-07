@@ -46,7 +46,7 @@ color:white;
 background:#ff1744;
 color:white;
 position:fixed;
-.container p{
+}.container p{
 font-size:20px;
 margin-bottom:20px;
 }
@@ -104,7 +104,8 @@ heart.remove();
 }
 
 setInterval(createHeart,300);
-document.body.innerHTML=`
+
+yes.onclick=function(){document.body.innerHTML=`
 <div style="height:100vh;
 display:flex;
 justify-content:center;
@@ -171,4 +172,3 @@ c.remove();
 
 </body>
 </html>
-yes.onclick=function(){
