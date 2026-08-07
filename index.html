@@ -12,23 +12,26 @@ padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
+
 body{
 height:100vh;
-overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#ff758c,#ff7eb3);
+overflow:hidden;
 }
+
 .container{
 text-align:center;
-color:white;
 }
+
 h1{
-font-size:42px;
+color:white;
+font-size:40px;
 margin-bottom:30px;
-text-shadow:2px 2px 10px rgba(0,0,0,.3);
 }
+
 button{
 padding:15px 35px;
 font-size:22px;
@@ -36,27 +39,26 @@ border:none;
 border-radius:40px;
 cursor:pointer;
 margin:15px;
-transition:.3s;
 }
+
 #yes{
 background:#00c853;
 color:white;
 }
+
 #no{
 background:#ff1744;
 color:white;
 position:fixed;
-}.container p{
-font-size:20px;
-margin-bottom:20px;
 }
+
 .heart{
 position:fixed;
-top:-50px;
+top:-20px;
 font-size:25px;
-animation:fall linear forwards;
-pointer-events:none;
+animation:fall 5s linear forwards;
 }
+
 @keyframes fall{
 to{
 transform:translateY(110vh) rotate(360deg);
@@ -70,19 +72,19 @@ opacity:0;
 
 <div class="container">
 <h1>💖 Will You Be My Girlfriend? 💖</h1>
-<p>You are the most special person in my life ❤️</p>
 
 <button id="yes">Yes ❤️</button>
 <button id="no">No 💔</button>
 </div>
 
 <script>
+
 const no=document.getElementById("no");
 const yes=document.getElementById("yes");
 
 function moveNo(){
-const x=Math.random()*(window.innerWidth-no.offsetWidth);
-const y=Math.random()*(window.innerHeight-no.offsetHeight);
+let x=Math.random()*(window.innerWidth-no.offsetWidth);
+let y=Math.random()*(window.innerHeight-no.offsetHeight);
 
 no.style.left=x+"px";
 no.style.top=y+"px";
@@ -90,82 +92,30 @@ no.style.top=y+"px";
 
 setInterval(moveNo,400);
 
-function createHeart(){
-const heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*3+3)+"s";
-document.body.appendChild(heart);
+setInterval(function(){
 
-setTimeout(()=>{
-heart.remove();
-},6000);
-}
+let h=document.createElement("div");
 
-setInterval(createHeart,300);
+h.className="heart";
 
-yes.onclick=function(){document.body.innerHTML=`
-<div style="height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-background:linear-gradient(135deg,#ff4e8a,#ff99cc);
-color:white;
-text-align:center;
-overflow:hidden;">
+h.innerHTML="❤️";
 
-<h1 style="font-size:60px;animation:pop 1s infinite alternate;">
-🎉 SHE SAID YES! 🎉
-</h1>
+h.style.left=Math.random()*100+"vw";
 
-<h2 style="font-size:35px;margin-top:20px;">
-❤️ I Love You Forever ❤️
-</h2>
+document.body.appendChild(h);
 
-<p style="font-size:22px;margin-top:15px;">
-💍 You Made Me The Happiest Person 💖
-</p>
+setTimeout(()=>h.remove(),5000);
 
-<div id="celebrate"></div>
+},300);
 
-<style>
-@keyframes pop{
-from{transform:scale(1);}
-to{transform:scale(1.15);}
-}
+yes.onclick=function(){
 
-.confetti{
-position:fixed;
-top:-20px;
-font-size:30px;
-animation:drop linear forwards;
-}
-
-@keyframes drop{
-to{
-transform:translateY(110vh) rotate(720deg);
-opacity:0;
-}
-}
-</style>
-`;
-
-setInterval(()=>{
-const c=document.createElement("div");
-c.className="confetti";
-c.innerHTML=["🎉","❤️","💖","💍","✨","🥰"][Math.floor(Math.random()*6)];
-c.style.left=Math.random()*100+"vw";
-c.style.animationDuration=(Math.random()*2+2)+"s";
-document.body.appendChild(c);
-
-setTimeout(()=>{
-c.remove();
-},4000);
-
-},100);
-
+document.body.innerHTML=`
+<div style="height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;background:#ff5fa2;color:white;text-align:center;">
+<h1 style="font-size:60px;">🎉 Yayyyy! 🎉</h1>
+<h2>❤️ I Love You Forever ❤️</h2>
+<h3>💍 You Made My Day 💖</h3>
+</div>`;
 };
 
 </script>
